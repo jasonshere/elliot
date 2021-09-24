@@ -33,6 +33,6 @@ experiment:
       predict_model: generator # You can chose also 'discriminator'
       g_epochs: 2 # For each model epoch there are g_epochs generator epochs
       d_epochs: 1 # For each model epoch there are d_epochs generator epochs
-      g_pretrain_epochs: [0, 2] # The epochs to pre-train the generator
-      d_pretrain_epochs: [0, 2] # The epochs to pre-train the discriminator
+      g_pretrain_epochs: 10 # The epochs to pre-train the generator
+      d_pretrain_epochs: 10 # The epochs to pre-train the discriminator
       sample_lambda: [0.2, 0.5]
