@@ -49,9 +49,11 @@ class DataSetLoader(LoaderCoordinator):
             path_train_data = config.data_config.train_path
             path_val_data = getattr(config.data_config, "validation_path", None)
             path_test_data = config.data_config.test_path
+            sep = config.data_config.sep
+            header = config.data_config.header
 
-            self.train_dataframe = pd.read_csv(path_train_data, sep="\t", header=None, names=self.column_names)
-            self.test_dataframe = pd.read_csv(path_test_data, sep="\t", header=None, names=self.column_names)
+            self.train_dataframe = pd.read_csv(path_train_data, sep=sep, header=header, names=self.column_names)
+            self.test_dataframe = pd.read_csv(path_test_data, sep=sep, header=header, names=self.column_names)
 
             # self.train_dataframe, self.side_information = self.coordinate_information(self.train_dataframe, sides=config.data_config.side_information)
             # self.train_dataframe = pd.read_csv(path_train_data, sep="\t", header=None, names=self.column_names)
@@ -66,7 +68,7 @@ class DataSetLoader(LoaderCoordinator):
                 self.train_dataframe["rating"] = 1
 
             if path_val_data:
-                self.validation_dataframe = pd.read_csv(path_val_data, sep="\t", header=None, names=self.column_names)
+                self.validation_dataframe = pd.read_csv(path_val_data, sep=sep, header=header, names=self.column_names)
                 self.validation_dataframe = self.check_timestamp(self.validation_dataframe)
 
                 if config.binarize == True or all(self.train_dataframe["rating"].isna()):
