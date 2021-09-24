@@ -26,7 +26,7 @@ experiment:
       epochs: 10
       batch_size: 128
       factors: [5, 5]
-      lr: [0.00001, 0.0001]
+      lr: [0.001, 0.001]
       l_w: 0.000001
       l_b: 0
       l_gan: 0.0001
