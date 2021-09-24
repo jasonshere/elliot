@@ -23,7 +23,7 @@ experiment:
         save_weights: False
         save_recs: False
         # validation_metric: HR
-      epochs: 30
+      epochs: 300
       batch_size: 512
       factors: 5
       lr: 0.001
