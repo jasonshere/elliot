@@ -89,7 +89,11 @@ class Generator(keras.Model):
 
             gan_loss = -tf.reduce_mean(tf.math.log(i_prob + 1e-5) * reward)
 
-            reg_loss = self._l_w * tf.reduce_sum([tf.nn.l2_loss(tf.gather(gamma_u, user[0])),
+            # reg_loss = self._l_w * tf.reduce_sum([tf.nn.l2_loss(tf.gather(gamma_u, user[0])),
+            #                                       tf.nn.l2_loss(tf.gather(gamma_i, pos))]) \
+            #            + self._l_b * tf.nn.l2_loss(tf.gather(beta_i, pos))
+
+            reg_loss = self._l_w * tf.reduce_sum([tf.nn.l2_loss(gamma_u),
                                                   tf.nn.l2_loss(tf.gather(gamma_i, pos))]) \
                        + self._l_b * tf.nn.l2_loss(tf.gather(beta_i, pos))
 
