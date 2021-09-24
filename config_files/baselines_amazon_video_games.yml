@@ -26,13 +26,13 @@ experiment:
       epochs: 10
       batch_size: 512
       factors: 5
-      lr: 0.1
+      lr: 0.01
       l_w: 0.0
       l_b: 0
       l_gan: 0.0001
       predict_model: discriminator # You can chose also 'discriminator'
       g_epochs: 1 # For each model epoch there are g_epochs generator epochs
-      d_epochs: 3 # For each model epoch there are d_epochs generator epochs
-      g_pretrain_epochs: 25 # The epochs to pre-train the generator
-      d_pretrain_epochs: 25 # The epochs to pre-train the discriminator
+      d_epochs: 15 # For each model epoch there are d_epochs generator epochs
+      g_pretrain_epochs: 30 # The epochs to pre-train the generator
+      d_pretrain_epochs: 30 # The epochs to pre-train the discriminator
       sample_lambda: 0.2
