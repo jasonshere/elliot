@@ -31,7 +31,7 @@ experiment:
       l_b: 0
       l_gan: 0.0001
       predict_model: discriminator # You can chose also 'discriminator'
-      g_epochs: 2 # For each model epoch there are g_epochs generator epochs
+      g_epochs: 1 # For each model epoch there are g_epochs generator epochs
       d_epochs: 1 # For each model epoch there are d_epochs generator epochs
       g_pretrain_epochs: 10 # The epochs to pre-train the generator
       d_pretrain_epochs: 10 # The epochs to pre-train the discriminator
