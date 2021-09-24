@@ -25,7 +25,7 @@ experiment:
         # validation_metric: HR
       epochs: 20
       batch_size: 512
-      factors: 5
+      factors: 50
       lr: 0.01
       l_w: 0.00001
       l_b: 0.00001
