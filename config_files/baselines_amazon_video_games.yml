@@ -1,0 +1,38 @@
+experiment:
+  gpu: 1
+  data_config:
+    strategy: fixed
+    sep: ","
+    header: 0
+    train_path: /content/drive/MyDrive/recommender_datasets/datasets/Amazon-video-games/train_df_1.csv
+    test_path: /content/drive/MyDrive/recommender_datasets/datasets/Amazon-video-games/test_df_1.csv
+  binarize: True
+  dataset: amazon_video_games
+  top_k: 100
+  evaluation:
+    cutoffs: [ 5, 20 ]
+    simple_metrics: [ Precision, Recall ]
+    relevance_threshold: 1
+    paired_ttest: True
+  models:
+    IRGAN:
+      meta:
+        # hyper_opt_alg: grid
+        # validation_rate: 5
+        verbose: True
+        # save_weights: False
+        save_recs: True
+        # validation_metric: HR
+      epochs: 10
+      batch_size: 128
+      factors: [50, 100]
+      lr: [0.00001, 0.0001]
+      l_w: 0.000001
+      l_b: 0
+      l_gan: 0.0001
+      predict_model: generator # You can chose also 'discriminator'
+      g_epochs: 2 # For each model epoch there are g_epochs generator epochs
+      d_epochs: 1 # For each model epoch there are d_epochs generator epochs
+      g_pretrain_epochs: [0, 2] # The epochs to pre-train the generator
+      d_pretrain_epochs: [0, 2] # The epochs to pre-train the discriminator
+      sample_lambda: [0.2, 0.5]
