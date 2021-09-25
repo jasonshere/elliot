@@ -9,7 +9,6 @@ __email__ = 'felice.merra@poliba.it, vitowalter.anelli@poliba.it, claudio.pomo@p
 
 import numpy as np
 from tqdm import tqdm
-import pandas as pd
 
 from elliot.dataset.samplers import pointwise_pos_neg_sampler as pws
 from elliot.recommender import BaseRecommenderModel
@@ -141,7 +140,5 @@ class IRGAN(RecMixin, BaseRecommenderModel):
             predictions_top_k_test.update(recs_test)
         return predictions_top_k_val, predictions_top_k_test
 
-    def save_predictions(self, path):
-        predictions = self._model.predict(0, self._num_users)
-        pd.DataFrame(predictions).to_csv(path, index=False)
+    
 
