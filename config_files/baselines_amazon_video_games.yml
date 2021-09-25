@@ -35,4 +35,4 @@ experiment:
       d_epochs: 1 # For each model epoch there are d_epochs generator epochs
       g_pretrain_epochs: 10 # The epochs to pre-train the generator
       d_pretrain_epochs: 10 # The epochs to pre-train the discriminator
-      sample_lambda: 0.5
+      sample_lambda: 0.2
