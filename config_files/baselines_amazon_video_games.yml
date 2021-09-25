@@ -1,6 +1,6 @@
 experiment:
   gpu: 0
-  path_output_rec_weight: /content/drive/MyDrive/recommender_datasets/model_predictions/IRGAN/Amazon-video-games/fold-1/
+  path_output_rec_pred: /content/drive/MyDrive/recommender_datasets/model_predictions/IRGAN/Amazon-video-games/fold-1/
   data_config:
     strategy: fixed
     sep: ","
@@ -21,7 +21,8 @@ experiment:
         # hyper_opt_alg: grid
         # validation_rate: 5
         verbose: True
-        save_weights: True
+        save_weights: False
+        save_predictions: True
         save_recs: False
         # validation_metric: HR
       epochs: 30
