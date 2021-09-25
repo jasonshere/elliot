@@ -37,6 +37,7 @@ _negative_sampling = "negative_sampling"
 _dataset = 'dataset'
 _dataloader = 'dataloader'
 _weights = 'path_output_rec_weight'
+_predictions = 'path_output_rec_pred'
 _performance = 'path_output_rec_performance'
 _logger_config = 'path_logger_config'
 _log_folder = 'path_log_folder'
@@ -107,12 +108,16 @@ class NameSpaceModel:
         #         self.config[_experiment][_data_paths][path].format(self.config[_experiment][_dataset])
         default_results_recs = os.sep.join(["..", "results", "{0}", "recs"])
         default_results_weights = os.sep.join(["..", "results", "{0}", "weights"])
+        default_results_predictions = os.sep.join(["..", "results", "{0}", "predictions"])
         default_results_performance = os.sep.join(["..", "results", "{0}", "performance"])
         self.config[_experiment][_recs] = os.path.abspath(self.config[_experiment]\
             .get(_recs, self._set_path(self._base_folder_path_config, default_results_recs))\
             .format(self.config[_experiment][_dataset]))
         self.config[_experiment][_weights] = os.path.abspath(self.config[_experiment]\
             .get(_weights, self._set_path(self._base_folder_path_config, default_results_weights)) \
+            .format(self.config[_experiment][_dataset]))
+        self.config[_experiment][_predictions] = os.path.abspath(self.config[_experiment]\
+            .get(_weights, self._set_path(self._base_folder_path_config, default_results_predictions)) \
             .format(self.config[_experiment][_dataset]))
         self.config[_experiment][_performance] = os.path.abspath(self.config[_experiment]\
             .get(_performance, self._set_path(self._base_folder_path_config, default_results_performance)) \
@@ -122,10 +127,10 @@ class NameSpaceModel:
         self.config[_experiment][_version] = self.config[_experiment].get(_version, __version__)
 
 
-        manage_directories(self.config[_experiment][_recs], self.config[_experiment][_weights],
+        manage_directories(self.config[_experiment][_recs], self.config[_experiment][_weights], self.config[_experiment][_predictions],
                            self.config[_experiment][_performance])
 
-        for p in [_data_config, _weights, _recs, _dataset, _top_k, _performance, _logger_config,
+        for p in [_data_config, _weights, _predictions, _recs, _dataset, _top_k, _performance, _logger_config,
                   _log_folder, _dataloader, _splitting, _prefiltering, _evaluation, _external_models_path,
                   _print_triplets, _config_test, _negative_sampling, _binarize, _random_seed, _align_side_with_train,
                   _version]:
