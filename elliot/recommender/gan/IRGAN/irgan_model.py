@@ -261,6 +261,8 @@ class IRGAN_model(keras.Model):
                 # Here is the importance sampling.
                 pn = (1 - self._sample_lambda) * prob
                 pn[pos] += self._sample_lambda * 1.0 / len(pos)
+                if np.isnan(np.sum(pn)):
+                    continue
                 sample = np.random.choice(np.arange(self._num_items), 2 * len(pos), p=pn)
 
                 # Get reward and adapt it with importance sampling
