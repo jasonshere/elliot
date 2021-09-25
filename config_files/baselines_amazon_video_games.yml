@@ -23,12 +23,12 @@ experiment:
         save_weights: False
         save_recs: False
         # validation_metric: HR
-      epochs: 20
+      epochs: 50
       batch_size: 512
       factors: 50
       lr: 0.01
-      l_w: 0.00001
-      l_b: 0.00001
+      l_w: 0.0001
+      l_b: 0.0001
       l_gan: 0.0001
       predict_model: discriminator # You can chose also 'discriminator'
       g_epochs: 1 # For each model epoch there are g_epochs generator epochs
