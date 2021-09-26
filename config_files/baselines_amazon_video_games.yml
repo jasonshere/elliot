@@ -22,10 +22,10 @@ experiment:
         # hyper_opt_alg: grid
         # validation_rate: 5
         verbose: True
-        save_weights: True
+        save_weights: False
         save_recs: False
         # validation_metric: HR
-      epochs: 50
+      epochs: 2
       batch_size: 512
       factors: 50
       lr: 0.001
