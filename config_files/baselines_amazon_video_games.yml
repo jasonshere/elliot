@@ -1,6 +1,7 @@
 experiment:
   gpu: 0
   path_output_rec_weight: /content/drive/MyDrive/recommender_datasets/model_predictions/IRGAN/Amazon-video-games/fold-1/
+  path_output_rec_performance: /content/drive/MyDrive/recommender_datasets/model_predictions/IRGAN/Amazon-video-games/fold-1/
   data_config:
     strategy: fixed
     sep: ","
