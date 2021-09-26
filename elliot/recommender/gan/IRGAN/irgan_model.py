@@ -285,6 +285,17 @@ class IRGAN_model(keras.Model):
             return self._discriminator.Bi + tf.matmul(self._discriminator.Gu[start:stop], self._discriminator.Gi,
                                                       transpose_b=True)
 
+    def get_all_predictions(self):
+        if self._predict_model == "generator":
+            return self._generator.Bi + tf.matmul(self._generator.Gu, self._generator.Gi, transpose_b=True)
+        else:
+            return self._discriminator.Bi + tf.matmul(self._discriminator.Gu, self._discriminator.Gi,
+                                                      transpose_b=True)
+
+    def save_preds(self, path):
+        predictions = self.get_all_predictions()
+        pd.DataFrame(predictions).to_csv(path, index=False)
+
     def get_top_k(self, predictions, train_mask, k=100):
         return tf.nn.top_k(tf.where(train_mask, predictions, -np.inf), k=k, sorted=True)
 
