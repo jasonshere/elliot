@@ -42,7 +42,7 @@ def run_experiment(config_path: str = '', ds_fold = '1'):
     config_test(builder, base)
 
     base.base_namespace.data_config.train_path = "{}/train_df_{}.csv" .format(base.base_namespace.data_config.train_path, ds_fold)
-    base.base_namespace.data_config.test_path = "{}/test_df_{}.csv" .format(base.base_namespace.data_config.train_path, ds_fold)
+    base.base_namespace.data_config.test_path = "{}/test_df_{}.csv" .format(base.base_namespace.data_config.test_path, ds_fold)
     base.base_namespace.path_output_rec_weight = "{}/fold-{}/" .format(base.base_namespace.path_output_rec_weight, ds_fold)
     base.base_namespace.path_output_rec_performance = "{}/fold-{}/" .format(base.base_namespace.path_output_rec_performance, ds_fold)
 
