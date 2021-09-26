@@ -159,6 +159,5 @@ def init_charger(init):
         self._params.name = self.name
         build_model_folder(self._config.path_output_rec_weight, self.name)
         self._saving_filepath = os.path.abspath(os.sep.join([self._config.path_output_rec_weight, self.name, f"best-weights-{self.name}"]))
-        self._saving_pred_filepath = os.path.abspath(os.sep.join([self._config.path_output_rec_weight, "predictions.csv"]))
 
     return new_init

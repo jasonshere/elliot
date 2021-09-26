@@ -55,7 +55,6 @@ class RecMixin(object):
                 if self._save_weights:
                     if hasattr(self, "_model"):
                         self._model.save_weights(self._saving_filepath)
-                        self._model.save_preds(self._saving_pred_filepath)
                     else:
                         self.logger.warning("Saving weights FAILED. No model to save.")
 
