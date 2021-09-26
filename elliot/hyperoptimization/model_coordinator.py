@@ -81,7 +81,7 @@ class ModelCoordinator(object):
             'name': model.name
         }
 
-    def single(self):
+    def single(self, path=''):
         """
         This function respect the signature, and the return format required for HyperOpt optimization
         :param args: a Dictionary that contains the new hyper-parameter values that will be used in the current run
@@ -100,7 +100,7 @@ class ModelCoordinator(object):
             self.logger.info(f"Exploration: Train-Validation Fold exploration number {trainval_index+1}")
             model = self.model_class(data=data_obj, config=self.base, params=self.params)
             model.train()
-            model.save_predictions('./predictions.csv')
+            model.save_predictions(path)
             losses.append(model.get_loss())
             results.append(model.get_results())
 

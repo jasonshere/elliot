@@ -101,7 +101,7 @@ def run_experiment(config_path: str = ''):
                 logger.info(f"Tuning ended for {model_class.__name__}")
             else:
                 logger.info(f"Training begun for {model_class.__name__}\\n")
-                single = model_placeholder.single()
+                single = model_placeholder.single(base.base_namespace.path_output_rec_weight)
 
                 ############################################
                 best_model_loss = single["loss"]
