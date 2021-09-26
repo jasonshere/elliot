@@ -1,0 +1,40 @@
+experiment:
+  gpu: 0
+  path_output_rec_weight: /content/drive/MyDrive/recommender_datasets/model_predictions/IRGAN/Amazon-grocery/
+  path_output_rec_performance: /content/drive/MyDrive/recommender_datasets/model_predictions/IRGAN/Amazon-grocery/
+  data_config:
+    strategy: fixed
+    sep: ","
+    header: 0
+    train_path: /content/drive/MyDrive/recommender_datasets/datasets/Amazon-grocery/
+    test_path: /content/drive/MyDrive/recommender_datasets/datasets/Amazon-grocery/
+  binarize: True
+  dataset: amazon_grocery
+  top_k: 100
+  evaluation:
+    cutoffs: [ 5, 20 ]
+    simple_metrics: [ Precision, Recall ]
+    relevance_threshold: 1
+    paired_ttest: False
+  models:
+    IRGAN:
+      meta:
+        # hyper_opt_alg: grid
+        # validation_rate: 5
+        verbose: True
+        save_weights: True
+        save_recs: False
+        # validation_metric: HR
+      epochs: 50
+      batch_size: 512
+      factors: 50
+      lr: 0.003
+      l_w: 0.0001
+      l_b: 0.0001
+      l_gan: 0.0001
+      predict_model: discriminator # You can chose also 'discriminator'
+      g_epochs: 1 # For each model epoch there are g_epochs generator epochs
+      d_epochs: 1 # For each model epoch there are d_epochs generator epochs
+      g_pretrain_epochs: 10 # The epochs to pre-train the generator
+      d_pretrain_epochs: 10 # The epochs to pre-train the discriminator
+      sample_lambda: 0.2
