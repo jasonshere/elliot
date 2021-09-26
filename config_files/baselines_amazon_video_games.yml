@@ -6,8 +6,8 @@ experiment:
     strategy: fixed
     sep: ","
     header: 0
-    train_path: /content/drive/MyDrive/recommender_datasets/datasets/Amazon-video-games/train_df_{}.csv
-    test_path: /content/drive/MyDrive/recommender_datasets/datasets/Amazon-video-games/test_df_{}.csv
+    train_path: /content/drive/MyDrive/recommender_datasets/datasets/Amazon-video-games/
+    test_path: /content/drive/MyDrive/recommender_datasets/datasets/Amazon-video-games/
   binarize: True
   dataset: amazon_video_games
   top_k: 100

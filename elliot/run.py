@@ -41,10 +41,10 @@ def run_experiment(config_path: str = '', ds_fold = '1'):
     base = builder.base
     config_test(builder, base)
 
-    base.base_namespace.data_config.train_path = base.base_namespace.data_config.train_path.format(ds_fold)
-    base.base_namespace.data_config.test_path = base.base_namespace.data_config.test_path.format(ds_fold)
-    base.base_namespace.path_output_rec_weight = base.base_namespace.path_output_rec_weight.format(ds_fold)
-    base.base_namespace.path_output_rec_performance = base.base_namespace.path_output_rec_performance.format(ds_fold)
+    base.base_namespace.data_config.train_path = "{}/train_df_{}.csv" .format(base.base_namespace.data_config.train_path, ds_fold)
+    base.base_namespace.data_config.test_path = "{}/test_df_{}.csv" .format(base.base_namespace.data_config.train_path, ds_fold)
+    base.base_namespace.path_output_rec_weight = "{}/fold-{}/" .format(base.base_namespace.path_output_rec_weight, ds_fold)
+    base.base_namespace.path_output_rec_performance = "{}/fold-{}/" .format(base.base_namespace.path_output_rec_performance, ds_fold)
 
     logging_project.init(base.base_namespace.path_logger_config, base.base_namespace.path_log_folder)
     logger = logging_project.get_logger("__main__")
