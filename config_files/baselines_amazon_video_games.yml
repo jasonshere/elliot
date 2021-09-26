@@ -1,13 +1,13 @@
 experiment:
   gpu: 0
-  path_output_rec_weight: /content/drive/MyDrive/recommender_datasets/model_predictions/IRGAN/Amazon-video-games/fold-1/
-  path_output_rec_performance: /content/drive/MyDrive/recommender_datasets/model_predictions/IRGAN/Amazon-video-games/fold-1/
+  path_output_rec_weight: /content/drive/MyDrive/recommender_datasets/model_predictions/IRGAN/Amazon-video-games/fold-{}/
+  path_output_rec_performance: /content/drive/MyDrive/recommender_datasets/model_predictions/IRGAN/Amazon-video-games/fold-{}/
   data_config:
     strategy: fixed
     sep: ","
     header: 0
-    train_path: /content/drive/MyDrive/recommender_datasets/datasets/Amazon-video-games/train_df_1.csv
-    test_path: /content/drive/MyDrive/recommender_datasets/datasets/Amazon-video-games/test_df_1.csv
+    train_path: /content/drive/MyDrive/recommender_datasets/datasets/Amazon-video-games/train_df_{}.csv
+    test_path: /content/drive/MyDrive/recommender_datasets/datasets/Amazon-video-games/test_df_{}.csv
   binarize: True
   dataset: amazon_video_games
   top_k: 100
