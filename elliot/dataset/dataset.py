@@ -199,6 +199,7 @@ class DataSet(AbstractDataset):
             self.side_information = side_information_data
 
         self.train_dict = self.dataframe_to_dict(data_tuple[0])
+        self.test_dict = self.dataframe_to_dict(data_tuple[1])
 
         self.users = list(self.train_dict.keys())
         self.items = list({k for a in self.train_dict.values() for k in a.keys()})
@@ -218,7 +219,15 @@ class DataSet(AbstractDataset):
         self.i_train_dict = {self.public_users[user]: {self.public_items[i]: v for i, v in items.items()}
                                 for user, items in self.train_dict.items()}
 
+        self.i_test_dict = {self.public_users[user]: {self.public_items[i]: v for i, v in items.items()}
+                                for user, items in self.test_dict.items()}
+
         self.sp_i_train = self.build_sparse()
+        self.sp_i_test = self.build_test_sparse()
+
+        pd.DataFrame(self.sp_i_train.toarray()).to_csv(path_output_rec_weight + "/train.csv", index=False)
+        pd.DataFrame(self.sp_i_test.toarray()).to_csv(path_output_rec_weight + "/test.csv", index=False)
+
         self.sp_i_train_ratings = self.build_sparse_ratings()
 
         if len(data_tuple) == 2:
@@ -266,6 +275,15 @@ class DataSet(AbstractDataset):
     def build_sparse(self):
 
         rows_cols = [(u, i) for u, items in self.i_train_dict.items() for i in items.keys()]
+        rows = [u for u, _ in rows_cols]
+        cols = [i for _, i in rows_cols]
+        data = sp.csr_matrix((np.ones_like(rows), (rows, cols)), dtype='float32',
+                             shape=(len(self.users), len(self.items)))
+        return data
+
+    def build_test_sparse(self):
+
+        rows_cols = [(u, i) for u, items in self.i_test_dict.items() for i in items.keys()]
         rows = [u for u, _ in rows_cols]
         cols = [i for _, i in rows_cols]
         data = sp.csr_matrix((np.ones_like(rows), (rows, cols)), dtype='float32',

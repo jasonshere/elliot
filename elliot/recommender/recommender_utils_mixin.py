@@ -23,7 +23,6 @@ class RecMixin(object):
                     t.update()
 
             self.evaluate(it, loss/(it + 1))
-        self._model.save_predictions(self._config.path_output_rec_weight)
 
     def evaluate(self, it=None, loss=0):
         if (it is None) or (not (it + 1) % self._validation_rate):
@@ -55,8 +54,8 @@ class RecMixin(object):
                 self.best_metric_value = self._results[-1][self._validation_k]["val_results"][self._validation_metric]
                 if self._save_weights:
                     if hasattr(self, "_model"):
-                        self._model.save_weights(self._saving_filepath)
-                        # self._model.save_predictions(self._config.path_output_rec_weight)
+                        # self._model.save_weights(self._saving_filepath)
+                        self._model.save_predictions(self._config.path_output_rec_weight)
                     else:
                         self.logger.warning("Saving weights FAILED. No model to save.")
 
