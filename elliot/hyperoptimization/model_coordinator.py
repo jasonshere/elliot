@@ -99,6 +99,7 @@ class ModelCoordinator(object):
             self.logger.info(f"Exploration: Train-Validation Fold exploration number {trainval_index+1}")
             model = self.model_class(data=data_obj, config=self.base, params=self.params)
             model.train()
+            model.save_predictions('./predictions.csv')
             losses.append(model.get_loss())
             results.append(model.get_results())
 
