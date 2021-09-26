@@ -11,6 +11,7 @@ from types import SimpleNamespace
 import typing as t
 import numpy as np
 import logging as pylog
+import pandas as pd
 
 from elliot.utils import logging
 
