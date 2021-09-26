@@ -225,8 +225,8 @@ class DataSet(AbstractDataset):
         self.sp_i_train = self.build_sparse()
         self.sp_i_test = self.build_test_sparse()
 
-        pd.DataFrame(self.sp_i_train.toarray()).to_csv(path_output_rec_weight + "/train.csv", index=False)
-        pd.DataFrame(self.sp_i_test.toarray()).to_csv(path_output_rec_weight + "/test.csv", index=False)
+        pd.DataFrame(self.sp_i_train.toarray()).to_csv(config.path_output_rec_weight + "/train.csv", index=False)
+        pd.DataFrame(self.sp_i_test.toarray()).to_csv(config.path_output_rec_weight + "/test.csv", index=False)
 
         self.sp_i_train_ratings = self.build_sparse_ratings()
 
