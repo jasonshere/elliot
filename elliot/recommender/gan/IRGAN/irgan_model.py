@@ -311,7 +311,3 @@ class IRGAN_model(keras.Model):
 
     def get_config(self):
         raise NotImplementedError
-
-    def save_predictions(self, path):
-        predictions = self.predict(0, self._num_users)
-        pd.DataFrame(predictions).to_csv(path, index=False)

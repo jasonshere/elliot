@@ -23,11 +23,6 @@ class RecMixin(object):
                     t.update()
 
             self.evaluate(it, loss/(it + 1))
-        if self._save_predictions:
-            if hasattr(self, "_model"):
-                self._model.save_predictions(self._pred_saving_filepath)
-            else:
-                self.logger.warning("Saving predictions FAILED. No predictions to save.")
 
     def evaluate(self, it=None, loss=0):
         if (it is None) or (not (it + 1) % self._validation_rate):

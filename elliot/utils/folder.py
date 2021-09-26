@@ -11,7 +11,7 @@ import os
 import shutil
 
 
-def manage_directories(path_output_rec_result, path_output_rec_weight, path_output_rec_pred, path_output_rec_performance):
+def manage_directories(path_output_rec_result, path_output_rec_weight, path_output_rec_performance):
     if os.path.exists(path_output_rec_result):
         return
     os.makedirs(path_output_rec_result)
@@ -19,10 +19,6 @@ def manage_directories(path_output_rec_result, path_output_rec_weight, path_outp
     if os.path.exists(path_output_rec_weight):
         return
     os.makedirs(path_output_rec_weight)
-
-    if os.path.exists(path_output_rec_pred):
-        return
-    os.makedirs(path_output_rec_pred)
 
     if os.path.exists(path_output_rec_performance):
         return

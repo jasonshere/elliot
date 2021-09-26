@@ -58,7 +58,6 @@ class BaseRecommenderModel(ABC):
 
         self._validation_metric = self._validation_metric[0]
         self._save_weights = getattr(self._params.meta, "save_weights", False)
-        self._save_predictions = getattr(self._params.meta, "save_predictions", False)
         self._save_recs = getattr(self._params.meta, "save_recs", False)
         self._verbose = getattr(self._params.meta, "verbose", None)
         self._validation_rate = getattr(self._params.meta, "validation_rate", 1)
@@ -159,8 +158,6 @@ def init_charger(init):
         self.evaluator = Evaluator(self._data, self._params)
         self._params.name = self.name
         build_model_folder(self._config.path_output_rec_weight, self.name)
-        build_model_folder(self._config.path_output_rec_pred, 'predictions')
         self._saving_filepath = os.path.abspath(os.sep.join([self._config.path_output_rec_weight, self.name, f"best-weights-{self.name}"]))
-        self._pred_saving_filepath = os.path.abspath(os.sep.join([self._config.path_output_rec_pred, self.name, f"best-weights-{self.name}"]))
 
     return new_init
