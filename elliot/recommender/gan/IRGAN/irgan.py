@@ -132,8 +132,9 @@ class IRGAN(RecMixin, BaseRecommenderModel):
 
     def save_predictions(self, path):
         print("Saving predictions..")
-        predictions = self._model.predict(0, self._num_users)
-        pd.DataFrame(predictions).to_csv(path + "predictions.csv", index=False)
+        predictions = self._model.predict(0, self._num_users).numpy()
+        print(predictions)
+        # pd.DataFrame(predictions).to_csv(path + "predictions.csv", index=False)
 
     def get_recommendations(self, k: int = 100):
         predictions_top_k_test = {}
