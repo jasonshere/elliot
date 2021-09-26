@@ -9,6 +9,7 @@ __email__ = 'felice.merra@poliba.it, vitowalter.anelli@poliba.it, claudio.pomo@p
 
 import numpy as np
 from tqdm import tqdm
+import pandas as pd
 
 from elliot.dataset.samplers import pointwise_pos_neg_sampler as pws
 from elliot.recommender import BaseRecommenderModel
